@@ -23,9 +23,6 @@ const Login = () => {
  return (
   <React.Fragment>
    <section className="container">
-    <div className="alert alert-danger">
-     Invalid credentials
-     </div>
     <h1 className="large text-primary">Sign In</h1>
     <p className="lead"><i className="fas fa-user"></i>
     Singn in to your account
@@ -41,7 +38,7 @@ const Login = () => {
      />
      <InputField
       type="email"
-      placeholder="Email Address"
+      placeholder="Password"
       name="Password"
       value={password}
       onChange={event => handleChange(event)}

@@ -1,14 +1,23 @@
 import React, { useState } from 'react'
-import InputField from './InputField'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-const Register = () => {
+import { setAlert } from '../../actions/alert'
+import { register } from '../../actions/auth'
+
+
+import InputField from './InputField'
+
+const Register = ({ setAlert, register }) => {
  const [formData, setFormData] = useState({
   name: '',
   email: '',
   password: '',
   password2: ''
  })
+
+ const { name, email, password, password2 } = formData
 
  const handleChange = (event) => setFormData(
   { ...formData, [event.target.name]: event.target.value }
@@ -18,14 +27,11 @@ const Register = () => {
   event.preventDefault()
 
   if (password !== password2) {
-   console.log('Passwords do not math');
+   setAlert('Passwords do not math', 'danger');
   } else {
-   console.log('success');
-
+   register({ name, email, password })
   }
  }
-
- const { name, email, password, password2 } = formData
 
  return (
   <React.Fragment>
@@ -33,14 +39,14 @@ const Register = () => {
     <h1 className="large text-primary">Sign Up</h1>
     <p className="lead"><i className="fas fa-user"></i> Create Your Account
     </p>
-    <form className="form" onSubmit={onFormSubmit}>
+    <form className="form" onSubmit={event => onFormSubmit(event)}>
      <InputField
       type="text"
       placeholder="Name"
       name="name"
       value={name}
       onChange={event => handleChange(event)}
-      required
+     // required
      />
      <InputField
       type="email"
@@ -50,7 +56,7 @@ const Register = () => {
       onChange={event => handleChange(event)}
       smallText='This site uses Gravatar so if you want a profile image, use a
       Gravatar email'
-      required
+     // required
      />
      <InputField
       type="password"
@@ -59,7 +65,8 @@ const Register = () => {
       minLength="6"
       value={password}
       onChange={event => handleChange(event)}
-      required
+     // minLength='6'
+     // required
      />
      <InputField
       type="password"
@@ -68,7 +75,8 @@ const Register = () => {
       minLength="6"
       value={password2}
       onChange={event => handleChange(event)}
-      required
+     // minLength='6'
+     // required
      />
      <InputField
       type="submit"
@@ -84,4 +92,9 @@ const Register = () => {
  )
 }
 
-export default Register
+Register.propTypes = {
+ setAlert: PropTypes.func.isRequired,
+ register: PropTypes.func.isRequired,
+}
+
+export default connect(null, { setAlert, register })(Register)
