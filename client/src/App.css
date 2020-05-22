@@ -40,8 +40,7 @@ img {
  margin: auto;
  overflow: hidden;
  padding: 0 2rem;
- margin-top: 6rem;
- /* margin-bottom: 3rem; */
+ margin-top: 3rem;
 }
 
 /* Text Styles*/
@@ -237,6 +236,7 @@ img {
 /* Forms */
 .form .form-group {
  margin: 1.2rem 0;
+ margin-bottom: -0.5rem;
 }
 
 .form .form-text {
@@ -335,6 +335,7 @@ button {
  position: relative;
  background: url('./img/showcase.jpg') no-repeat center center/cover;
  height: 100vh;
+ margin-bottom: -30%;
 }
 
 .landing-inner {
@@ -523,13 +524,16 @@ button {
  }
 
  .navbar h1 {
-   margin-bottom: 1rem;
+  margin-bottom: 1rem;
  }
 
  .navbar .welcome {
-   display: none;
+  display: none;
  }
 
+ .alert {
+  margin-bottom: -3rem;
+ }
  /* Profiles Page */
  .profile {
    grid-template-columns: 1fr;
