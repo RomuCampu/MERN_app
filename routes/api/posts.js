@@ -129,7 +129,7 @@ router.put('/like/:id', auth, async (request, response) => {
  }
 })
 
-// @route     PUST api/posts/like/:id
+// @route     PUST api/posts/unlike/:id
 // @desc      Like a post by id
 // @access    Private
 
